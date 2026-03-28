@@ -1,0 +1,143 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #f4f4f4;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4751b; /* Arancio */
+    padding: 10px 25px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.logo-text {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}
+
+/* BOTTONE AGGIUNGI */
+.btn-add {
+    background-color: #258529; /* Verde */
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 50%; /* Lo rendiamo tondo */
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-add:hover {
+    transform: scale(1.1);
+    background-color: #1e6b21;
+}
+
+.menu-btn {
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-btn:hover {
+    color: #258529;
+}
+
+/* DASHBOARD CENTRALE */
+.main-dashboard {
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.logo-container {
+    text-align: center;
+    background: white;
+    padding: 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 8px solid #d4751b;
+}
+
+.logo-main {
+    max-width: 250px;
+    margin-bottom: 20px;
+}
+
+.logo-container h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.logo-container p {
+    color: #777;
+    font-size: 16px;
+}
+
+/* SIDENAV */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: #258529; /* Sfondo verde invece che nero */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+.sidenav-header {
+    color: white;
+    padding: 8px 32px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.sidenav a {
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+    border-left: 5px solid transparent;
+}
+
+.sidenav a i {
+    width: 30px;
+}
+
+.sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #d4751b;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+}

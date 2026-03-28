@@ -1,0 +1,228 @@
+/* ==========================================
+   BASICS & RESET (Stile Index)
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #f4f4f4; /* Grigio chiaro Index */
+}
+
+/* ==========================================
+   HEADER (Stile Index)
+   ========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4751b; /* Arancio Index */
+    padding: 10px 25px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.form-title-header {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* BOTTONI HEADER (Stile Index) */
+.btn-nav, .menu-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-nav:hover, .menu-btn:hover {
+    color: #258529; /* Hover verde come su Index */
+}
+
+/* ==========================================
+   SIDENAV (Verde Index)
+   ========================================== */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    background-color: #258529; /* Verde Index */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+.sidenav-header {
+    color: white;
+    padding: 8px 32px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.sidenav a {
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+    border-left: 5px solid transparent;
+}
+
+.sidenav a i {
+    width: 30px;
+    text-align: center;
+}
+
+.sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #d4751b; /* Bordo arancio Index */
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+}
+
+/* ==========================================
+   LAYOUT E FORM (Stile logo-container Index)
+   ========================================== */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.container {
+    background-color: white;
+    width: 100%;
+    max-width: 850px;
+    padding: 40px;
+    border-radius: 20px; /* Arrotondato come Index */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 8px solid #d4751b; /* Bordo arancio come logo-container */
+}
+
+.form-title {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.comanda-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 30px;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #777; /* Colore testo Index */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+input, textarea, select {
+    padding: 12px 15px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: #fafafa;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #258529; /* Focus verde */
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(37, 133, 41, 0.1);
+}
+
+.full-width {
+    grid-column: span 2;
+}
+
+/* ==========================================
+   BOTTONE CONFERMA (Stile btn-add Index)
+   ========================================== */
+.btn-submit {
+    background-color: #258529; /* Verde come btn-add */
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 30px; /* Molto arrotondato */
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 30px;
+    transition: 0.3s;
+    width: 100%; /* Su mobile occupa tutto, su desktop vediamo */
+    box-shadow: 0 4px 10px rgba(37, 133, 41, 0.2);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-submit:hover {
+    background-color: #1e6b21;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(37, 133, 41, 0.3);
+}
+
+.btn-submit:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .comanda-grid {
+        grid-template-columns: 1fr;
+    }
+    .full-width {
+        grid-column: span 1;
+    }
+    .container {
+        padding: 25px;
+    }
+}

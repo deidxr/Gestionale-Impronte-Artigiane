@@ -1,0 +1,109 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    min-height: 100vh;
+}
+
+/* HEADER (Stesso stile delle altre pagine) */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4751b;
+    padding: 10px 25px;
+    color: white;
+}
+
+.logo-text {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.btn-home, .menu-btn {
+    background-color: #258529;
+    color: white;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.btn-home:hover {
+    background-color: #1e6b21;
+}
+
+/* LAYOUT */
+.main-content {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.listino-container {
+    width: 100%;
+    max-width: 900px;
+}
+
+.listino-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    overflow: hidden; /* Taglia l'immagine se esce dai bordi arrotondati */
+    border-top: 8px solid #258529;
+}
+
+.card-header {
+    padding: 20px;
+    text-align: center;
+    background-color: #fafafa;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+.card-header i {
+    font-size: 30px;
+    color: #d4751b;
+    margin-bottom: 10px;
+}
+
+/* IMMAGINE LISTINO */
+.listino-img {
+    display: block;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+}
+
+.card-footer {
+    padding: 15px;
+    text-align: center;
+    background-color: #f9f9f9;
+    color: #888;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* SIDENAV (Stesso stile di bt.js) */
+.sidenav {
+    height: 100%; width: 0; position: fixed; z-index: 100;
+    top: 0; left: 0; background-color: #258529;
+    overflow-x: hidden; padding-top: 60px; transition: 0.5s;
+}
+.sidenav-header { color: white; padding: 8px 32px; font-size: 12px; text-transform: uppercase; opacity: 0.7; margin-bottom: 20px;}
+.sidenav a { padding: 15px 32px; text-decoration: none; font-size: 20px; color: white; display: block; transition: 0.3s; }
+.sidenav a:hover { background-color: rgba(255,255,255,0.1); }
+.sidenav .closebtn { position: absolute; top: 10px; right: 25px; font-size: 36px; }
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+    .main-content { padding: 10px; }
+    .card-header h2 { font-size: 18px; }
+}

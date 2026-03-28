@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ContactName - Gestione Ordini</title>
+    <link rel="stylesheet" href="Ordini.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="sidenav-header">Menu</div>
+                <a href="Ordini.html"><i class="fa-solid fa-list-check"></i> Ordini</a>
+                <a href="Comanda.html"><i class="fa-solid fa-plus"></i> Nuova Comanda</a>
+                <a href="Listino prezzi.html"><i class="fa-solid fa-tags"></i> Listino</a>
+                <a href="bt.html"><i class="fa-solid fa-battery-three-quarters"></i> Batterie</a>
+            </div>
+            <span onclick="openNav()"><i class="fas fa-bars menu-btn"></i></span>
+        </div>
+        <div class="header-center">GESTIONE ORDINI</div>
+        <div class="header-right">
+            <a href="index.html"><button class="btn-home"><i class="fa-solid fa-house"></i></button></a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="search-container">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="searchInput" placeholder="Cerca cliente, lavoro, N° ordine o posizione..." onkeyup="filtraOrdini()">
+        </div>
+
+        <div class="table-container">
+            <table id="ordiniTable">
+                <thead>
+                    <tr>
+                        <th>N°</th>
+                        <th>Data Ordine</th>
+                        <th>Cliente</th>
+                        <th>Incaricato</th>
+                        <th>Lavorazione</th>
+                        <th>Consegna</th>
+                        <th>Posizione</th>
+                        <th>Saldo</th>
+                        <th>Stato</th>
+                        <th>Note</th>
+                        <th style="text-align:center;">Chiama</th>
+                    </tr>
+                </thead>
+                <tbody id="tabellaCorpo">
+                    <tr>
+                        <td colspan="11" style="text-align:center; padding: 40px;">
+                            <i class="fa-solid fa-spinner fa-spin"></i> Caricamento database in corso...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="Ordini.js"></script>
+</body>
+</html>

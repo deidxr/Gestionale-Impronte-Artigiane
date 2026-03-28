@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impronte Artigiane - Nuova Comanda</title>
+    <link rel="stylesheet" href="Comanda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div class="sidenav-header">Menu</div>
+                <a href="Ordini.html"><i class="fa-solid fa-list-check"></i> Ordini</a>
+                <a href="Listino prezzi.html"><i class="fa-solid fa-tags"></i> Listino</a>
+                <a href="bt.html"><i class="fa-solid fa-battery-three-quarters"></i> Batterie</a>
+            </div>
+            <span onclick="openNav()"><i class="fas fa-bars menu-btn"></i></span>
+        </div>
+        <div class="header-right">
+            <a href="index.html"><button class="btn-nav"><i class="fa-solid fa-house"></i></button></a>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <h1 class="form-title">Nuova Comanda</h1>
+            
+            <form name="contact-form" class="comanda-grid">
+                
+                <div class="input-group">
+                    <label>Nome Cliente</label>
+                    <input type="text" name="Nome" placeholder="Nome e Cognome" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Telefono</label>
+                    <input type="tel" name="Telefono" placeholder="Cellulare">
+                </div>
+
+                <div class="input-group">
+                    <label>N° Ordine</label>
+                    <input type="text" name="NumeroOrdine" placeholder="Es: 001">
+                </div>
+
+                <div class="input-group">
+                    <label>Incaricato</label>
+                    <input type="text" name="Incaricato" placeholder="Chi esegue il lavoro?">
+                </div>
+
+                <div class="input-group">
+                    <label>Data Ordine</label>
+                    <input type="date" name="DataOrdine" id="dataAttuale">
+                </div>
+
+                <div class="input-group">
+                    <label>Data Consegna</label>
+                    <input type="date" name="DataConsegna">
+                </div>
+
+                <div class="input-group">
+                    <label>Lavorazione</label>
+                    <input type="text" name="Lavorazione" placeholder="Es: Risolatura">
+                </div>
+
+                <div class="input-group">
+                    <label>Posizione</label>
+                    <input type="text" name="Posizione" placeholder="Scaffale / Settore">
+                </div>
+
+                <div class="input-group">
+                    <label>Acconto (€)</label>
+                    <input type="number" step="0.01" name="Acconto" placeholder="0.00">
+                </div>
+
+                <div class="input-group">
+                    <label>Saldo (€)</label>
+                    <input type="number" step="0.01" name="Saldo" placeholder="0.00">
+                </div>
+
+                <div class="input-group full-width">
+                    <label>Stato Ordine</label>
+                    <select name="Stato">
+                        <option value="Ricevuto">📥 Ricevuto</option>
+                        <option value="In Lavorazione">🔨 In Lavorazione</option>
+                        <option value="Pronto">✅ Pronto per il ritiro</option>
+                        <option value="Consegnato">📦 Consegnato</option>
+                        <option value="In Attesa Materiali">⏳ In attesa materiali</option>
+                    </select>
+                </div>
+
+                <div class="input-group full-width">
+                    <label>Note</label>
+                    <textarea name="Note" rows="3" placeholder="Dettagli extra..."></textarea>
+                </div>
+
+                <div class="full-width" style="text-align: center; margin-top: 20px;">
+                    <button type="submit" id="submit" class="btn-submit">CONFERMA COMANDA</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="Comanda.js"></script>
+</body>
+</html>

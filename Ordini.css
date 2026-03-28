@@ -1,0 +1,222 @@
+/* ==========================================
+   BASICS & RESET (Stile Index)
+   ========================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body, html {
+    height: 100%;
+    background-color: #f4f4f4; /* Grigio chiaro Index */
+}
+
+/* ==========================================
+   HEADER (Stile Index)
+   ========================================== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #d4751b; /* Arancio Index */
+    padding: 10px 25px;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-center {
+    font-weight: bold;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+/* BOTTONI HEADER (Stile Index) */
+.btn-home, .menu-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-home:hover, .menu-btn:hover {
+    color: #258529; /* Hover verde come su Index */
+}
+
+/* ==========================================
+   SIDENAV (Verde Index)
+   ========================================== */
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    background-color: #258529; /* Sfondo verde Index */
+    overflow-x: hidden;
+    padding-top: 60px;
+    transition: 0.5s;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.2);
+}
+
+.sidenav-header {
+    color: white;
+    padding: 8px 32px;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.7;
+    margin-bottom: 20px;
+}
+
+.sidenav a {
+    padding: 15px 32px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: 0.3s;
+    border-left: 5px solid transparent;
+}
+
+.sidenav a i {
+    width: 30px;
+    text-align: center;
+}
+
+.sidenav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-left: 5px solid #d4751b; /* Bordo arancio Index */
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    color: white;
+}
+
+/* ==========================================
+   MAIN CONTENT & TABELLA
+   ========================================== */
+.main-content {
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* BARRA DI RICERCA (Coerente con card Index) */
+.search-container {
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    border-bottom: 4px solid #d4751b; /* Richiamo stile logo-container */
+}
+
+.search-container i {
+    color: #258529;
+    margin-right: 15px;
+}
+
+.search-container input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 16px;
+    background: transparent;
+}
+
+/* TABELLA */
+.table-container {
+    background: white;
+    border-radius: 20px; /* Arrotondato come Index */
+    overflow-x: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    border-bottom: 8px solid #258529; /* Verde Index in fondo */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+    white-space: nowrap;
+}
+
+th {
+    background-color: #fafafa;
+    color: #777;
+    text-align: left;
+    padding: 18px 15px;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 1px solid #eee;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f1f1;
+    font-size: 14px;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f9f9f9;
+}
+
+/* NOTE & DETTAGLI */
+td:nth-last-child(2) {
+    white-space: normal;
+    min-width: 200px;
+    font-size: 12px;
+    color: #666;
+}
+
+/* BADGE STATI (Colori coordinati) */
+.badge {
+    padding: 5px 12px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.stato-ricevuto { background: #e3f2fd; color: #1976d2; }
+.stato-lavorazione { background: #fff3e0; color: #e65100; }
+.stato-pronto { background: #e8f5e9; color: #258529; } /* Verde Index */
+.badge-default { background: #eee; color: #777; }
+
+/* PULSANTE CHIAMA */
+.btn-call {
+    color: #258529;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+
+.btn-call:hover {
+    color: #d4751b;
+    transform: scale(1.2);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .header-center { font-size: 0.9rem; }
+    td, th { padding: 12px 10px; font-size: 13px; }
+}
