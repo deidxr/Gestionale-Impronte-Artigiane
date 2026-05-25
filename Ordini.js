@@ -1,11 +1,87 @@
 /* ==========================================
    CONFIGURAZIONE
    ========================================== */
-const scriptURL = 'https://script.google.com/macros/s/AKfycbzAe4ZkAKHcgj42j7L-xsfqbfIz8AuAwQCuR7BWjH8d7yK-Huly0mIuN9KRT3YoQ11bfw/exec';
+const scriptURL = 'https://script.google.com/macros/s/AKfycbyPUKyfbVDRyHnq3Yswb61iEo_YjYKEOqo8gcbubKDY2BcciKZjuacStmYuNzjT3IVOKg/exec';
 
-/* ==========================================
-   GESTIONE MENU LATERALE
-   ========================================== */
+let tuttiGliOrdini = [];
+
+async function caricaOrdini() {
+    const corpo = document.getElementById("tabellaCorpo");
+    try {
+        const response = await fetch(SCRIPT_URL);
+        tuttiGliOrdini = await response.json();
+        mostraOrdini(tuttiGliOrdini);
+    } catch (error) {
+        corpo.innerHTML = `<tr><td colspan="11" style="text-align:center; padding:40px; color:red;">Errore nel caricamento dei dati</td></tr>`;
+    }
+}
+
+function mostraOrdini(ordini) {
+    const corpo = document.getElementById("tabellaCorpo");
+    corpo.innerHTML = "";
+    
+    if (ordini.length === 0) {
+        corpo.innerHTML = `<tr><td colspan="11" style="text-align:center; padding:40px;">Nessun ordine trovato</td></tr>`;
+        return;
+    }
+
+    ordini.forEach(item => {
+        const tr = document.createElement("tr");
+        
+        let dataOrdineFormattata = "-";
+        if (item.dataO) {
+            if (item.dataO.includes("T")) {
+                dataOrdineFormattata = new Date(item.dataO).toLocaleDateString("it-IT");
+            } else {
+                dataOrdineFormattata = item.dataO;
+            }
+        }
+
+        let dataConsegnaFormattata = "-";
+        if (item.dataC) {
+            if (item.dataC.includes("T")) {
+                dataConsegnaFormattata = new Date(item.dataC).toLocaleDateString("it-IT");
+            } else {
+                dataConsegnaFormattata = item.dataC;
+            }
+        }
+
+        const statoClasse = (item.stato || "ricevuto").toLowerCase().replace(/\s+/g, "-");
+
+        tr.innerHTML = `
+            <td>#${item.ordine || "-"}</td>
+            <td>${dataOrdineFormattata}</td>
+            <td><strong>${item.nome || "-"}</strong><br><small style="color:#777;">${item.telefono || ""}</small></td>
+            <td>${item.incaricato || "-"}</td>
+            <td>${item.lavoro || "-"}</td>
+            <td>${dataConsegnaFormattata}</td>
+            <td>${item.posizione || "-"}</td>
+            <td>€ ${parseFloat(item.saldo || 0).toFixed(2)}</td>
+            <td><span class="badge stato-${statoClasse}">${item.stato || "RICEVUTO"}</span></td>
+            <td>${item.note || "-"}</td>
+            <td style="text-align:center;">
+                ${item.telefono ? `<a href="tel:${item.telefono}" class="btn-call"><i class="fa-solid fa-phone"></i></a>` : "-"}
+            </td>
+        `;
+        corpo.appendChild(tr);
+    });
+}
+
+function filtraOrdini() {
+    const query = document.getElementById("searchInput").value.toLowerCase();
+    const filtrati = tuttiGliOrdini.filter(item => {
+        return (
+            (item.nome && item.nome.toLowerCase().includes(query)) ||
+            (item.lavoro && item.lavoro.toLowerCase().includes(query)) ||
+            (item.ordine && item.ordine.toString().includes(query)) ||
+            (item.posizione && item.posizione.toLowerCase().includes(query))
+        );
+    });
+    mostraOrdini(filtrati);
+}
+
+document.addEventListener("DOMContentLoaded", caricaOrdini);
+
 function openNav() {
     document.getElementById("mySidenav").style.width = "250px";
 }
@@ -13,91 +89,3 @@ function openNav() {
 function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
 }
-
-/* ==========================================
-   CARICAMENTO DATI DA GOOGLE SHEETS
-   ========================================== */
-async function caricaOrdini() {
-    const tabellaCorpo = document.getElementById('tabellaCorpo');
-    
-    try {
-        const response = await fetch(scriptURL);
-        const dati = await response.json();
-
-        tabellaCorpo.innerHTML = '';
-
-        if (dati.length === 0) {
-            tabellaCorpo.innerHTML = '<tr><td colspan="11" style="text-align:center;">Nessun ordine in archivio.</td></tr>';
-            return;
-        }
-
-        // ORDINAMENTO: Dal numero ordine più alto al più basso (i più recenti sopra)
-        // Se preferisci dal più basso al più alto, scambia b.ordine e a.ordine
-        dati.sort((a, b) => (parseInt(b.ordine) || 0) - (parseInt(a.ordine) || 0));
-
-        dati.forEach(ordine => {
-            const riga = document.createElement('tr');
-
-            // Gestione colore dei badge in base allo stato
-            let classeBadge = 'badge-default';
-            const stato = (ordine.stato || '').toLowerCase();
-            
-            if (stato.includes('ricevuto')) classeBadge = 'stato-ricevuto';
-            else if (stato.includes('lavorazione')) classeBadge = 'stato-lavorazione';
-            else if (stato.includes('pronto')) classeBadge = 'stato-pronto';
-
-            // Formattazione Date (se presenti)
-            const formattaData = (dataStr) => {
-                if (!dataStr || dataStr === '-') return '-';
-                const d = new Date(dataStr);
-                return isNaN(d) ? dataStr : d.toLocaleDateString('it-IT');
-            };
-
-            riga.innerHTML = `
-                <td style="font-weight:bold; color:#258529;">#${ordine.ordine || '-'}</td>
-                <td>${formattaData(ordine.dataO)}</td>
-                <td>
-                    <div style="font-weight:bold;">${ordine.nome || '-'}</div>
-                    <div style="font-size:0.8rem; color:#666;">${ordine.telefono || ''}</div>
-                </td>
-                <td>${ordine.incaricato || '-'}</td>
-                <td>${ordine.lavoro || '-'}</td>
-                <td>${formattaData(ordine.dataC)}</td>
-                <td style="font-weight:bold; color:#d4751b;">${ordine.posizione || '-'}</td>
-                <td style="font-weight:bold;">€ ${ordine.saldo || '0.00'}</td>
-                <td><span class="badge ${classeBadge}">${ordine.stato || 'Ricevuto'}</span></td>
-                <td style="max-width:150px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; font-size:0.8rem;">
-                    ${ordine.note || ''}
-                </td>
-                <td style="text-align:center;">
-                    <a href="tel:${ordine.telefono}" class="btn-call">
-                        <i class="fa-solid fa-phone"></i>
-                    </a>
-                </td>
-            `;
-            tabellaCorpo.appendChild(riga);
-        });
-
-    } catch (errore) {
-        console.error('Errore:', errore);
-        tabellaCorpo.innerHTML = '<tr><td colspan="11" style="text-align:center; color:red;">Errore nel caricamento. Controlla la connessione o lo script URL.</td></tr>';
-    }
-}
-
-/* ==========================================
-   FUNZIONE DI RICERCA (FILTRO)
-   ========================================== */
-function filtraOrdini() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const righe = document.getElementById("tabellaCorpo").getElementsByTagName("tr");
-
-    for (let i = 0; i < righe.length; i++) {
-        const testoRiga = righe[i].innerText.toLowerCase();
-        righe[i].style.display = testoRiga.includes(input) ? "" : "none";
-    }
-}
-
-/* ==========================================
-   AVVIO AUTOMATICO
-   ========================================== */
-document.addEventListener('DOMContentLoaded', caricaOrdini);
