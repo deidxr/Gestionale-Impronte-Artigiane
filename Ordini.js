@@ -1,14 +1,11 @@
-/* ==========================================
-   CONFIGURAZIONE
-   ========================================== */
-const scriptURL = "https://script.google.com/macros/s/AKfycbwnM-MTX3sdo9n5PTyLRiBOznZYibUv_Nl5EcwFwxC5gUgfv8C_vtqQcsyvL56gpVmhTg/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbw7kJwiLCOOUGKREEMkbh3E2IoweIyZH9Vw9WZlOpsNS0O3m8veZ00ncqvzUJZczCuyoA/exec";
 
 let tuttiGliOrdini = [];
 
 async function caricaOrdini() {
     const corpo = document.getElementById("tabellaCorpo");
     try {
-        const response = await fetch(SCRIPT_URL);
+        const response = await fetch(scriptURL);
         tuttiGliOrdini = await response.json();
         mostraOrdini(tuttiGliOrdini);
     } catch (error) {
