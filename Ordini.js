@@ -1,7 +1,7 @@
 /* ==========================================
    CONFIGURAZIONE
    ========================================== */
-const scriptURL = "https://script.google.com/macros/s/AKfycbyPUKyfbVDRyHnq3Yswb61iEo_YjYKEOqo8gcbubKDY2BcciKZjuacStmYuNzjT3IVOKg/exec";
+const scriptURL = "https://script.google.com/macros/s/AKfycbwnM-MTX3sdo9n5PTyLRiBOznZYibUv_Nl5EcwFwxC5gUgfv8C_vtqQcsyvL56gpVmhTg/exec";
 
 let tuttiGliOrdini = [];
 
